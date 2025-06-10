@@ -65,6 +65,9 @@ This Accountant provides the exchange rate information needed by the Teller to a
    1. _Rate Limiting_: Exchange rates can only be updated so often.
    2. _Bound Limiting_: Exchange rates must fall within a certain bound created using the previous exchange rate on chain.
    3. These two restrictions greatly limit how fast the exchange rate can change, and if either of them are violated, the Accountant enters a `paused` state which stops all BoringVault deposits and withdraws, and new exchange rate updates, until permissioned accounts unpause it.
+### VaultFactory
+The repository now includes a `VaultFactory` contract that lets anyone deploy a Boring Vault with custom ERC-20 assets. It deploys a vault, manager, teller and accountant using a new `RolesAuthority` so deposits work immediately.
+
 
 ## Audits
 
