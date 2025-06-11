@@ -64,7 +64,15 @@ This Accountant provides the exchange rate information needed by the Teller to a
 2. Exchange rates written on chain are rate limited, and bound limited.
    1. _Rate Limiting_: Exchange rates can only be updated so often.
    2. _Bound Limiting_: Exchange rates must fall within a certain bound created using the previous exchange rate on chain.
-   3. These two restrictions greatly limit how fast the exchange rate can change, and if either of them are violated, the Accountant enters a `paused` state which stops all BoringVault deposits and withdraws, and new exchange rate updates, until permissioned accounts unpause it.
+3. These two restrictions greatly limit how fast the exchange rate can change, and if either of them are violated, the Accountant enters a `paused` state which stops all BoringVault deposits and withdraws, and new exchange rate updates, until permissioned accounts unpause it.
+
+### DailyRebalancer
+
+`DailyRebalancer` extends `DexAggregatorUManager` and holds a list of assets with
+their respective allocation weights. Calling `rebalance` swaps the vault's
+pending deposit asset into each configured asset using 1inch according to the
+configured weights. This function expects the same merkle proofs and decoder
+arrays used by other uManagers and can be triggered offchain on a schedule.
 
 ## Audits
 
