@@ -68,6 +68,9 @@ This Accountant provides the exchange rate information needed by the Teller to a
 ### VaultFactory
 The repository now includes a `VaultFactory` contract that lets anyone deploy a Boring Vault with custom ERC-20 assets. It deploys a vault, manager, teller and accountant using a new `RolesAuthority` so deposits work immediately.
 
+### AllocationRouter
+An optional `AllocationRouter` contract channels USDC deposits into arbitrary ERC-20 compositions using a swapper. It supports rebalancing when allocation percentages change.
+
 
 ## Audits
 
